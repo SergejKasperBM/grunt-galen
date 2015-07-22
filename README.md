@@ -43,11 +43,24 @@ forAll(config.getDevices(), function (device) {
   // Just like unit test's `it( ... )`
   test('Example on ' + device.deviceName, function () {
     gl.openPage(device, config.getProjectPage());
-    
     gl.runSpecFile(device, './test/example-test.spec');
   });
 });
 ```
+If you test for visual regressions you can create base-images for all image-comparisons in a seperate test beforehand by dumping a spec-file:
+
+```js
+load ('../gl.js');
+
+forAll(config.getDevices(), function (device) {
+  // Just like unit test's `it( ... )`
+  test('Example on ' + device.deviceName, function () {
+    gl.openPage(device, config.getProjectPage());
+    gl.dumpSpecFile(device, './test/example-test.spec', "test/images/example");
+  });
+});
+```
+
 
 This test suite runs the `example-test.spec` file against the main project page. 
 
