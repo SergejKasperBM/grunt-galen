@@ -53,7 +53,6 @@ If you test for visual regressions you can create base-images for all image-comp
 load ('../gl.js');
 
 forAll(config.getDevices(), function (device) {
-  // Just like unit test's `it( ... )`
   test('Example on ' + device.deviceName, function () {
     gl.openPage(device, config.getProjectPage());
     gl.dumpSpecFile(device, './test/example-test.spec', "test/images/example");
